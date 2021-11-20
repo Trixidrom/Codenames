@@ -16,7 +16,6 @@ class TranslationOfNumbers {
             var digit: Int
             var result = ""
 
-
             while (dec>0){
                 digit = dec % countDictionary
                 result += dictionary[digit]

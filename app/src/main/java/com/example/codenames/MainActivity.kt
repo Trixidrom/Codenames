@@ -1,24 +1,22 @@
 package com.example.codenames
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.codenames.TranslationOfNumbers.Companion.decimalToSixtyTwo
-import com.example.codenames.TranslationOfNumbers.Companion.sixtyTwoToDecimal
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        println("=========------========")
-        println(decimalToSixtyTwo(63)) //11
-        println(decimalToSixtyTwo(62)) //10
-        println(decimalToSixtyTwo(3843)) //zz
 
+        btn_new_game.setOnClickListener {
+            val newGameIntent = Intent (this, ActivityNewGame::class.java)
+            startActivity(newGameIntent)
+        }
 
-        println(sixtyTwoToDecimal("11"))
-        println(sixtyTwoToDecimal("10"))
-        println(sixtyTwoToDecimal("zz"))
 
     }
 
