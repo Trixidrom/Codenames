@@ -6,13 +6,25 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.game.*
 
 
 class ActivityGame: AppCompatActivity(R.layout.game) {
 
+    val cardIds = listOf(R.id.card1, R.id.card2)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        for(i in cardIds){
+            addCardToFragment(i)
+        }
+    }
+
+    private fun addCardToFragment(ids: Int){
+        val transaction = supportFragmentManager.beginTransaction()
+            .add(ids, CardFragment.newInstance("$ids", "привет"))
+            .commit()
     }
 
     override fun onResume() {
