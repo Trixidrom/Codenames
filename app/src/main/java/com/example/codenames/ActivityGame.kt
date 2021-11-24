@@ -7,8 +7,15 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.util.Log
 
 class ActivityGame : AppCompatActivity(R.layout.game) {
+
+    companion object{
+        val PARAM_1 : String = "PARAM_1"
+        val IS_NEW_GAME = "IS_NEW_GAME"
+    }
 
     val cardIds = listOf(
         R.id.card0,
@@ -38,9 +45,15 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
         R.id.card24
     )
 
+    var game : Game? =null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hideSystemUI()
+        //hideSystemUI()
+
+        game = Game.getInstance()
+        Log.i("GAME",game?.param_1.toString())
 
         var colorMap = MathematicalOperations.CreateColorMap()
         var wordMap = MathematicalOperations.CreateWordMap(WORDS_GAGA_GAMES.size)
@@ -58,21 +71,55 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
 
     override fun onResume() {
         super.onResume()
-        @Suppress("DEPRECATION")
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+       // @Suppress("DEPRECATION")
+       // window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
     }
 
-    private fun hideSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.setDecorFitsSystemWindows(false)
-            window.insetsController?.let {
-                it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
-                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+    override fun onDestroy() {
+        super.onDestroy()
+        println("-------------!!!!!!!!!!!!")
+    }
+
+
+//    override fun onBackPressed() {
+//        val intent = Intent()
+//        intent.action = Intent.ACTION_MAIN
+//        intent.addCategory(Intent.CATEGORY_HOME)
+//        startActivity(intent)
+//    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (hasFocus) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                window.setDecorFitsSystemWindows(false)
+                window.insetsController?.let {
+                    it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                    it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                }
+            }else{
+                @Suppress("DEPRECATION")
+                window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
             }
-        } else {
-            getSupportActionBar()?.hide()
-            @Suppress("DEPRECATION")
-            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         }
     }
+
+//    private fun hideSystemUI() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            window.setDecorFitsSystemWindows(false)
+//            window.insetsController?.let {
+//                it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+//                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+//            }
+//        } else {
+//            getSupportActionBar()?.hide()
+//            @Suppress("DEPRECATION")
+//            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+//        }
+//    }
 }
