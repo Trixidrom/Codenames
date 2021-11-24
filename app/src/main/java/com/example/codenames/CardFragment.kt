@@ -1,29 +1,29 @@
 package com.example.codenames
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_card.*
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_COLOR = "color"
+private const val ARG_WORD = "word"
 
 class CardFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
+    private var color: Int? = null
+    private var word: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            color = it.getInt(ARG_COLOR)
+            word = it.getInt(ARG_WORD)
         }
     }
-
 
 
     override fun onCreateView(
@@ -32,17 +32,25 @@ class CardFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_card, container, false)
         val textCard = view.findViewById<TextView>(R.id.cardName)
-        textCard.text = param1
+        textCard.text = WORDS_GAGA_GAMES[word ?: 0]
+
+        when(color){
+            1 -> textCard.setBackgroundResource(R.color.codeRed)
+            2 -> textCard.setBackgroundResource(R.color.codeBlue)
+            3 -> textCard.setBackgroundResource(R.color.codeBlack)
+            else -> textCard.setBackgroundResource(R.color.codeYellow)
+        }
+
         return view
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(color: Int, word: Int) =
             CardFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putInt(ARG_COLOR, color)
+                    putInt(ARG_WORD, word)
                 }
             }
     }

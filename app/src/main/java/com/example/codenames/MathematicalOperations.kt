@@ -2,7 +2,7 @@ package com.example.codenames
 
 import kotlin.math.pow
 
-class TranslationOfNumbers {
+class MathematicalOperations {
     //Класс переводит из 10-ой системы счисления в 62-ричную и наоборот
     // 62 ричный код, позволяет сохранять 3843 слова (по 2 символа на слово)
 
@@ -33,6 +33,17 @@ class TranslationOfNumbers {
                 indexCharOfInput++
             }
             return result
+        }
+
+        fun CreateColorMap (): List<Int>{
+            val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled()
+            return cardMap
+        }
+
+        fun CreateWordMap (listSize: Int): List<Int>{
+            val s: MutableSet<Int> = mutableSetOf()
+            while (s.size < 25) { s.add((0..(listSize-1)).random()) }
+            return s.toList()
         }
     }
 }

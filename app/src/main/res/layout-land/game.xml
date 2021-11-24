@@ -12,25 +12,46 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
-<!--TODO разобраться как управлять фреймами с стиля-->
+
+        <FrameLayout
+            android:id="@+id/card0"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
         <FrameLayout
             android:id="@+id/card1"
             android:name="com.example.codenames.CardFragment"
-            android:layout_margin="2dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </FrameLayout>
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
 
         <FrameLayout
             android:id="@+id/card2"
             android:name="com.example.codenames.CardFragment"
-            android:layout_margin="2dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </FrameLayout>
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
 
+        <FrameLayout
+            android:id="@+id/card3"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card4"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
 
 
     </LinearLayout>
@@ -40,6 +61,45 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <FrameLayout
+            android:id="@+id/card5"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card6"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card7"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card8"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card9"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
@@ -48,6 +108,45 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <FrameLayout
+            android:id="@+id/card10"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card11"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card12"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card13"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card14"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -55,6 +154,45 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <FrameLayout
+            android:id="@+id/card15"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card16"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card17"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card18"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card19"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,6 +200,45 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
+        <FrameLayout
+            android:id="@+id/card20"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card21"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card22"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card23"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
+
+        <FrameLayout
+            android:id="@+id/card24"
+            android:name="com.example.codenames.CardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </LinearLayout>
