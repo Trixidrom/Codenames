@@ -6,6 +6,9 @@
         <entry key="..\:/Android/Codenames/app/src/main/res/layout-land/game.xml" value="0.225" />
         <entry key="..\:/Android/Codenames/app/src/main/res/layout/activity_main.xml" value="0.29791666666666666" />
         <entry key="..\:/Android/Codenames/app/src/main/res/layout/activity_new_game.xml" value="0.29791666666666666" />
+        <entry key="..\:/Android/Codenames/app/src/main/res/layout/dialog_visibility_card.xml" value="0.36102564102564105" />
+        <entry key="..\:/Android/Codenames/app/src/main/res/layout/fragment_blank.xml" value="0.36102564102564105" />
+        <entry key="..\:/Android/Codenames/app/src/main/res/layout/fragment_card.xml" value="0.20572916666666666" />
       </map>
     </option>
   </component>

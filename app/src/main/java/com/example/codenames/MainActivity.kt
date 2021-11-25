@@ -14,14 +14,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn_new_game.setOnClickListener {
-            val newGameIntent = Intent (this, ActivityCreateGame::class.java)
+            val newGameIntent = Intent (this, ActivityMenuCreateGame::class.java)
             startActivity(newGameIntent)
         }
 
         btn_continue_game.setOnClickListener {
-
+            val gameIntent = Intent (this, ActivityGame::class.java)
+            startActivity(gameIntent)
         }
-
     }
 
     override fun onResume() {
