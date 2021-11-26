@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Выберите словарь:"
+                    android:text="@string/select_dictionary"
                     android:textSize="18sp" />
 
                 <RadioButton
@@ -89,7 +89,7 @@
                 android:id="@+id/btn_begin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Начать" />
+                android:text="@string/begin" />
 
         </LinearLayout>
 

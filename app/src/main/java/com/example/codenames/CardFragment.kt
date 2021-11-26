@@ -10,26 +10,30 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.example.codenames.Game.Companion.game
 
 private const val ARG_COLOR = "color"
 private const val ARG_WORD = "word"
 private const val ARG_NUMBER = "number"
+private const val ARG_TEXT_VISIBLE = "text_visible"
 
 class CardFragment() : Fragment() {
 
     var numberCard: Int = 0
     private var color: Int? = null
     private var word: Int? = null
+    private var textVisible = true
     var dialog: Dialog? = null
 
     companion object {
         @JvmStatic
-        fun newInstance(numberCard: Int, color: Int, word: Int) =
+        fun newInstance(numberCard: Int, color: Int, word: Int, textVisible: Boolean) =
             CardFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLOR, color)
                     putInt(ARG_WORD, word)
                     putInt(ARG_NUMBER, numberCard)
+                    putBoolean(ARG_TEXT_VISIBLE, textVisible)
                 }
             }
     }
@@ -44,6 +48,7 @@ class CardFragment() : Fragment() {
             color = it.getInt(ARG_COLOR)
             word = it.getInt(ARG_WORD)
             numberCard = it.getInt(ARG_NUMBER)
+            textVisible = it.getBoolean(ARG_TEXT_VISIBLE)
         }
 
     }
@@ -60,24 +65,29 @@ class CardFragment() : Fragment() {
 
         textCard.text = Dictionary.dictionary[word ?: 0]
 
-        view.setOnClickListener{
+        view.setOnLongClickListener{
             if (textCard.isVisible){
                 heading.text = "Скрыть?"
             }else{
                 heading.text = "Показать?"
             }
             dialog?.show()
+            true
         }
 
         Button.setOnClickListener{
             if (textCard.isVisible){
                 textCard.visibility = View.INVISIBLE
+                game?.visibleWord?.set(numberCard, false)
             }else{
                 textCard.visibility = View.VISIBLE
+                game?.visibleWord?.set(numberCard, true)
             }
 
             dialog?.hide()
         }
+
+        textCard.visibility = if (textVisible)  View.VISIBLE else View.INVISIBLE
 
         when(color){
             1 -> frameCard.setBackgroundResource(R.color.codeRed)

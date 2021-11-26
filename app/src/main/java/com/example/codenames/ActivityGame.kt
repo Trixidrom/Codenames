@@ -45,20 +45,14 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
         game = Game.getInstance()
 
         for (i in 0..24) {
-            addCardToFragment(cardIds[i], i, game?.colorMap?.get(i) ?: 0, game?.wordMap?.get(i) ?: 0)
+            addCardToFragment(cardIds[i], i, game?.colorMap?.get(i) ?: 0, game?.wordMap?.get(i) ?: 0, game?.visibleWord?.get(i)?: true)
         }
     }
 
-    private fun addCardToFragment(ids: Int, number: Int, color: Int, word: Int) {
+    private fun addCardToFragment(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {
         supportFragmentManager.beginTransaction()
-            .add(ids, CardFragment.newInstance(number, color, word))
+            .add(ids, CardFragment.newInstance(number, color, word, textVisibility))
             .commit()
-    }
-
-    override fun onResume() {
-        super.onResume()
-       // @Suppress("DEPRECATION")
-       // window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
