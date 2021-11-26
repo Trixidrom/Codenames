@@ -4,6 +4,7 @@ class Game {
 
     var colorMap = listOf<Int>()
     var wordMap = listOf<Int>()
+    var dictionary: List<String>? = null
     val visibleWord = mutableListOf(
         true,
         true,
@@ -47,7 +48,7 @@ class Game {
             if (game == null || newInstance) {
                 game = Game()
                 game?.colorMap = MathematicalOperations.CreateColorMap()
-                game?.wordMap = MathematicalOperations.CreateWordMap(WORDS_GAGA_GAMES.size)
+                game?.wordMap = MathematicalOperations.CreateWordMap(Dictionary.dictionary.size)
             }
             return game
         }

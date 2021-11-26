@@ -1,13 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/btn_begin"
-        android:text="Начать"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Выберите словарь:"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonGaga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Сodenames (400)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonUndercover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Глубоко под прикрытием 18+ (396)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonWithoutToponyms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Без топонимов (302)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonWithManyToponyms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Много топонимов (396)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFewToponyms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Немного топонимов (684)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFewToponymsAnd18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Немного топонимов + слова 18+ (1020)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonAllDictionary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Все словари (1064)" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBigDictionary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Популярные слова (2272)" />
+            </RadioGroup>
+
+            <!--    <Spinner-->
+            <!--        android:id="@+id/spinner"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:entries="@array/dictionary"-->
+            <!--        android:padding="5dp"-->
+            <!--        android:layout_marginBottom="10dp"/>-->
+
+            <Button
+                android:id="@+id/btn_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Начать" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

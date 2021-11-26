@@ -1,5 +1,27 @@
 package com.example.codenames
 
+class Dictionary {
+    companion object{
+        var dictionary: List<String> = WORDS_GAGA_GAMES
+        var numberDictionary = 0
+
+        fun setDictionary (numberDictionary: Int){
+            dictionary = when(numberDictionary){
+                0 -> WORDS_GAGA_GAMES
+                1 -> WORDS_DEEP_UNDERCOVER_GAGA_GAMES
+                2 -> WORDS_WITHOUT_TOPONYMS
+                3 -> WORDS_WITH_MANY_TOPONYMS
+                4 -> WORDS_FEW_TOPONIMS
+                5 -> WORDS_BIG_FEW_TOPONIMS_AND_18
+                6 -> WORDS_ALL_DICTIONARY
+                else -> WORDS_BIG_DICTIONARY
+            }
+
+            Dictionary.numberDictionary = numberDictionary
+        }
+    }
+}
+
 //Словарь из локализации GAGA Games (400 слов)
 val WORDS_GAGA_GAMES= listOf("Австралия", "автомат", "агент", "адвокат", "Азия", "акт", "альбом", "Альпы", "Америка", "амфибия", "ангел", "Англия",
     "Антарктида", "аппарат", "Атлантида", "Африка", "ацтек", "бабочка", "база", "Байкал", "банк", "баня", "бар", "барьер", "бассейн", "батарея", "башня",

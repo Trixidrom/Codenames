@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 
 private const val ARG_COLOR = "color"
@@ -59,7 +58,7 @@ class CardFragment() : Fragment() {
         val Button = dialog?.findViewById<Button>(R.id.btnDialogOk) as Button
         val heading = dialog?.findViewById<TextView>(R.id.heading) as TextView
 
-        textCard.text = WORDS_GAGA_GAMES[word ?: 0]
+        textCard.text = Dictionary.dictionary[word ?: 0]
 
         view.setOnClickListener{
             if (textCard.isVisible){

@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Codenames</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">12345678901234567</string>
+
+    <string-array name="dictionary">
+        <item>Сodenames (400)</item>
+        <item>Глубоко под прикрытием (396)</item>
+        <item>Без топонимов (302)</item>
+        <item>Много топонимов (396)</item>
+        <item>Немного топонимов (684)</item>
+        <item>Немного топонимов + слова 18+ (1020)</item>
+        <item>Все словари (1064)</item>
+        <item>Популярные слова (2272)</item>
+    </string-array>
+
 </resources>
