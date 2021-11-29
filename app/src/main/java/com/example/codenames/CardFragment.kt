@@ -23,7 +23,7 @@ class CardFragment() : Fragment() {
     private var color: Int? = null
     private var word: Int? = null
     private var textVisible = true
-    var dialog: Dialog? = null
+//    var dialog: Dialog? = null
 
     companion object {
         @JvmStatic
@@ -41,8 +41,8 @@ class CardFragment() : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dialog = context?.let { Dialog(it) }
-        dialog?.setContentView(R.layout.dialog_visibility_card)
+//        dialog = context?.let { Dialog(it) }
+//        dialog?.setContentView(R.layout.dialog_visibility_card)
 
         arguments?.let {
             color = it.getInt(ARG_COLOR)
@@ -60,22 +60,18 @@ class CardFragment() : Fragment() {
         val view = inflater.inflate(R.layout.fragment_card, container, false)
         val textCard = view.findViewById<TextView>(R.id.cardName)
         val frameCard = view.findViewById<FrameLayout>(R.id.frameCard)
-        val Button = dialog?.findViewById<Button>(R.id.btnDialogOk) as Button
-        val heading = dialog?.findViewById<TextView>(R.id.heading) as TextView
+//        val Button = dialog?.findViewById<Button>(R.id.btnDialogOk) as Button
+//        val heading = dialog?.findViewById<TextView>(R.id.heading) as TextView
 
         textCard.text = Dictionary.dictionary[word ?: 0]
 
         view.setOnLongClickListener{
-            if (textCard.isVisible){
-                heading.text = "Скрыть?"
-            }else{
-                heading.text = "Показать?"
-            }
-            dialog?.show()
-            true
-        }
-
-        Button.setOnClickListener{
+//            if (textCard.isVisible){
+//                heading.text = "Скрыть?"
+//            }else{
+//                heading.text = "Показать?"
+//            }
+//            dialog?.show()
             if (textCard.isVisible){
                 textCard.visibility = View.INVISIBLE
                 game?.visibleWord?.set(numberCard, false)
@@ -83,17 +79,37 @@ class CardFragment() : Fragment() {
                 textCard.visibility = View.VISIBLE
                 game?.visibleWord?.set(numberCard, true)
             }
-
-            dialog?.hide()
+            true
         }
+
+//        Button.setOnClickListener{
+//            if (textCard.isVisible){
+//                textCard.visibility = View.INVISIBLE
+//                game?.visibleWord?.set(numberCard, false)
+//            }else{
+//                textCard.visibility = View.VISIBLE
+//                game?.visibleWord?.set(numberCard, true)
+//            }
+//
+//            dialog?.hide()
+//        }
 
         textCard.visibility = if (textVisible)  View.VISIBLE else View.INVISIBLE
 
-        when(color){
-            1 -> frameCard.setBackgroundResource(R.color.codeRed)
-            2 -> frameCard.setBackgroundResource(R.color.codeBlue)
-            3 -> frameCard.setBackgroundResource(R.color.codeBlack)
-            else -> frameCard.setBackgroundResource(R.color.codeYellow)
+        if(game?.redFirst!!){
+            when(color){
+                1 -> frameCard.setBackgroundResource(R.color.codeRed)
+                2 -> frameCard.setBackgroundResource(R.color.codeBlue)
+                3 -> frameCard.setBackgroundResource(R.color.codeBlack)
+                else -> frameCard.setBackgroundResource(R.color.codeYellow)
+            }
+        }else{
+            when(color){
+                1 -> frameCard.setBackgroundResource(R.color.codeBlue)
+                2 -> frameCard.setBackgroundResource(R.color.codeRed)
+                3 -> frameCard.setBackgroundResource(R.color.codeBlack)
+                else -> frameCard.setBackgroundResource(R.color.codeYellow)
+            }
         }
 
         return view

@@ -35,6 +35,16 @@ class MathematicalOperations {
             return result
         }
 
+        fun quaternaryToDecimal(input: String): Int {
+            var result = 0
+            var indexCharOfInput = 0
+            for(i in input.length-1 downTo 0){
+                result += input[indexCharOfInput].toString().toInt() * 4f.pow(i.toFloat()).toInt()
+                indexCharOfInput++
+            }
+            return result
+        }
+
         fun CreateColorMap (): List<Int>{
             val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled()
             return cardMap

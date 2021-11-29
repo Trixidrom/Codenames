@@ -47,6 +47,12 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
         for (i in 0..24) {
             addCardToFragment(cardIds[i], i, game?.colorMap?.get(i) ?: 0, game?.wordMap?.get(i) ?: 0, game?.visibleWord?.get(i)?: true)
         }
+
+        //TODO тесты
+        println("--------------")
+        println(game?.generateKey())
+        println(game?.wordMap)
+        println(MathematicalOperations.quaternaryToDecimal("321212"))
     }
 
     private fun addCardToFragment(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {

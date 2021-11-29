@@ -4,7 +4,7 @@ class Game {
 
     var colorMap = listOf<Int>()
     var wordMap = listOf<Int>()
-    var dictionary: List<String>? = null
+    var redFirst = true
     val visibleWord = mutableListOf(
         true,
         true,
@@ -54,7 +54,13 @@ class Game {
         }
     }
 
-    fun setWordVisibility(index: Int){
-        visibleWord[index] = !visibleWord[index]
+    fun generateKey(): String{
+        val wordMapKey = wordMap.map { val a= MathematicalOperations.decimalToSixtyTwo(it)
+            if(a.length>1) a else "0$a"}.joinToString("")
+
+        val key = Dictionary.numberDictionary.toString() + if(redFirst) "1" else {"0"} + wordMapKey
+        return key
     }
+
+
 }
