@@ -8,6 +8,9 @@ import android.view.View.VISIBLE
 import android.widget.EditText
 import com.example.codenames.Game.Companion.game
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         btn_generateKey.setOnClickListener{
             etKey.setText(game?.generateKey())
             dialog?.show()
+
+            //копировать в буфер
+            val clipboard: ClipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("", etKey.getText().toString())
+            clipboard.setPrimaryClip(clip)
+
         }
     }
 

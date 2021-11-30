@@ -38,7 +38,6 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
     )
     var game : Game? =null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //hideSystemUI()
