@@ -57,8 +57,9 @@ class Game {
     fun generateKey(): String{
         val wordMapKey = wordMap.map { val a= MathematicalOperations.decimalToSixtyTwo(it)
             if(a.length>1) a else "0$a"}.joinToString("")
+        val colorMapKey = MathematicalOperations.quaternaryToSixtyTwo(colorMap.joinToString(""))
 
-        val key = Dictionary.numberDictionary.toString() + if(redFirst) "1" else {"0"} + wordMapKey
+        val key = Dictionary.numberDictionary.toString() + if(redFirst) "1" else {"0"} + wordMapKey + ";" + colorMapKey
         return key
     }
 

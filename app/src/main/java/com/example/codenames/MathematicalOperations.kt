@@ -1,5 +1,6 @@
 package com.example.codenames
 
+import java.math.BigInteger
 import kotlin.math.pow
 
 class MathematicalOperations {
@@ -24,6 +25,18 @@ class MathematicalOperations {
             return result.reversed()
         }
 
+        fun decimalToSixtyTwo (input: String): String {
+            var dec = BigInteger(input)
+            var digit: Int
+            var result = ""
+            while (dec>BigInteger.ZERO){
+                digit = dec.mod(BigInteger.valueOf(countDictionary.toLong())).toInt()
+                result += dictionary[digit]
+                dec = dec.divide(BigInteger.valueOf(countDictionary.toLong()))
+            }
+            return result.reversed()
+        }
+
         fun sixtyTwoToDecimal(input: String): Int{
             var result = 0
             var indexCharOfInput = 0
@@ -35,14 +48,16 @@ class MathematicalOperations {
             return result
         }
 
-        fun quaternaryToDecimal(input: String): Int {
-            var result = 0
+        fun quaternaryToSixtyTwo(input: String): String {
+            var decimal = BigInteger.valueOf(0)
             var indexCharOfInput = 0
             for(i in input.length-1 downTo 0){
-                result += input[indexCharOfInput].toString().toInt() * 4f.pow(i.toFloat()).toInt()
+                decimal += BigInteger.valueOf(input[indexCharOfInput].toString().toLong()).multiply(BigInteger.valueOf(4f.pow(i.toFloat()).toLong()))
                 indexCharOfInput++
             }
-            return result
+            //^ реализован перевод с 4ричной в 10тичную
+
+            return decimalToSixtyTwo(decimal.toString())
         }
 
         fun CreateColorMap (): List<Int>{

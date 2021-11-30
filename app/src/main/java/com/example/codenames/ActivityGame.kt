@@ -38,6 +38,7 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
     )
     var game : Game? =null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //hideSystemUI()
@@ -50,9 +51,12 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
 
         //TODO тесты
         println("--------------")
+
         println(game?.generateKey())
+        println(game?.colorMap?.joinToString(""))
         println(game?.wordMap)
-        println(MathematicalOperations.quaternaryToDecimal("321212"))
+        println(MathematicalOperations.quaternaryToSixtyTwo("3222222222111111110000000"))
+        println(MathematicalOperations.quaternaryToSixtyTwo("111111112222222223"))
     }
 
     private fun addCardToFragment(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {
