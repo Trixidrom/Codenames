@@ -15,6 +15,12 @@
         android:layout_height="wrap_content"/>
 
     <Button
+        android:id="@+id/btn_game_from_key"
+        android:text="@string/game_from_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
         android:id="@+id/btn_generateKey"
         android:text="@string/generate_key"
         android:layout_width="match_parent"

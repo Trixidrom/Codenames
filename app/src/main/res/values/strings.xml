@@ -6,6 +6,7 @@
     <string name="continue_the_game">Продолжить</string>
     <string name="ok">Ok</string>
     <string name="generate_key">Сгенерировать ключ</string>
+    <string name="game_from_key">Игра по ключу</string>
 
     <string-array name="dictionary">
         <item>Сodenames (400)</item>

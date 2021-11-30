@@ -7,7 +7,7 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 
-class ActivityGame : AppCompatActivity(R.layout.game) {
+class ActivityGame : AppCompatActivity(R.layout.activity_game) {
 
     val cardIds = listOf(
         R.id.card0,
@@ -45,7 +45,7 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
         game = Game.getInstance()
 
         for (i in 0..24) {
-            addCardToFragment(cardIds[i], i, game?.colorMap?.get(i) ?: 0, game?.wordMap?.get(i) ?: 0, game?.visibleWord?.get(i)?: true)
+            addCardToFragmentForTeamLead(cardIds[i], i, game?.colorMap?.get(i) ?: 0, game?.wordMap?.get(i) ?: 0, game?.visibleWord?.get(i)?: true)
         }
 
         //TODO тесты
@@ -58,7 +58,7 @@ class ActivityGame : AppCompatActivity(R.layout.game) {
         println(MathematicalOperations.quaternaryToSixtyTwo("111111112222222223"))
     }
 
-    private fun addCardToFragment(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {
+    private fun addCardToFragmentForTeamLead(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {
         supportFragmentManager.beginTransaction()
             .add(ids, CardFragment.newInstance(number, color, word, textVisibility))
             .commit()
