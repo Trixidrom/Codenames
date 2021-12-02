@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Codenames">
+        <activity android:name=".EnterKeyActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -18,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ActivityMenuCreateGame"/>
-
-        <activity android:name=".ActivityGame"
-            android:screenOrientation="landscape"/>
+        <activity android:name=".ActivityMenuCreateGame" />
+        <activity
+            android:name=".ActivityGame"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Codenames.NoActionBar" />
     </application>
 
 </manifest>

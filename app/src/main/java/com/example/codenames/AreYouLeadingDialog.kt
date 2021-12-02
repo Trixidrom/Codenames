@@ -2,30 +2,27 @@ package com.example.codenames
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 
-class KeyExistDialog : DialogFragment() {
+class AreYouLeadingDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            builder.setTitle("Буфер обмена содержит ключ игры")
-                .setMessage("Создать игру по этому ключу?")
+            builder.setTitle("Вы ведущий?")
                 .setNegativeButton("Нет"){
-                        dialog, id ->
-                    val enterKeyIntent = Intent (context, EnterKeyActivity::class.java)
-                    startActivity(enterKeyIntent)
+                    dialog, id ->
+                    Toast.makeText(context, "Не", Toast.LENGTH_SHORT).show()
                 }
                 .setPositiveButton("Да"){
                         dialog, id ->
-                    goToChoiseLeadingOrNot(null, activity, context)
+                    Toast.makeText(context, "Ага", Toast.LENGTH_SHORT).show()
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+
     }
+
 }
-
-
