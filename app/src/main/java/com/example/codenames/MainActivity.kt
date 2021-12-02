@@ -1,30 +1,25 @@
 package com.example.codenames
 
 import android.app.Dialog
-import android.content.Intent
+import android.content.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.VISIBLE
 import android.widget.EditText
 import com.example.codenames.Game.Companion.game
 import kotlinx.android.synthetic.main.activity_main.*
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.widget.Toast
+import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
 
-    var dialog: Dialog? = null
-    lateinit var etKey: EditText
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        dialog = Dialog(this)
-        dialog?.setContentView(R.layout.generate_key_dialog)
-        etKey = dialog?.findViewById(R.id.et_key)!!
 
         btn_new_game.setOnClickListener {
             val newGameIntent = Intent (this, ActivityMenuCreateGame::class.java)
@@ -36,15 +31,36 @@ class MainActivity : AppCompatActivity() {
             startActivity(gameIntent)
         }
 
-        btn_generateKey.setOnClickListener{
-            etKey.setText(game?.generateKey())
-            dialog?.show()
+        btn_game_from_key.setOnClickListener{
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            var pasteData = ""
 
+            if (!clipboard.hasPrimaryClip() or !clipboard.getPrimaryClipDescription()?.hasMimeType(MIMETYPE_TEXT_PLAIN)!!) {
+                //если в буфере ничего нет или там не текст
+
+            } else {
+                //если в буфере текст
+                val keyExistDialog = KeyExistDialog()
+                val manager = supportFragmentManager
+                keyExistDialog.show(manager, "keyExist")
+
+
+                val item: ClipData.Item = clipboard.getPrimaryClip()!!.getItemAt(0)
+
+                // Gets the clipboard as text.
+                pasteData = item.text.toString()
+            }
+
+            println("паст дата: $pasteData")
+        }
+
+        ib_key.setOnClickListener{
             //копировать в буфер
             val clipboard: ClipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clip = ClipData.newPlainText("", etKey.getText().toString())
+            val clip = ClipData.newPlainText("", tv_key.getText().toString())
             clipboard.setPrimaryClip(clip)
 
+            Toast.makeText(this, "Ключ скопирован в буфер обмена", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -52,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         if (game != null){
             btn_continue_game.visibility = VISIBLE
-            btn_generateKey.visibility = VISIBLE
+            ll_key.visibility = VISIBLE
+            tv_key.setText(game?.generateKey())
         }
     }
 }

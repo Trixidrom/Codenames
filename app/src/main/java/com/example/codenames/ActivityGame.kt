@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
 class ActivityGame : AppCompatActivity(R.layout.activity_game) {
@@ -40,7 +41,7 @@ class ActivityGame : AppCompatActivity(R.layout.activity_game) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //hideSystemUI()
+        hideSystemUI()
 
         game = Game.getInstance()
 
@@ -56,6 +57,7 @@ class ActivityGame : AppCompatActivity(R.layout.activity_game) {
         println(game?.wordMap)
         println(MathematicalOperations.quaternaryToSixtyTwo("3222222222111111110000000"))
         println(MathematicalOperations.quaternaryToSixtyTwo("111111112222222223"))
+        println(MathematicalOperations.checkKey(game?.generateKey()))
     }
 
     private fun addCardToFragmentForTeamLead(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {
@@ -85,17 +87,17 @@ class ActivityGame : AppCompatActivity(R.layout.activity_game) {
         }
     }
 
-//    private fun hideSystemUI() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.setDecorFitsSystemWindows(false)
-//            window.insetsController?.let {
-//                it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
-//                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-//            }
-//        } else {
-//            getSupportActionBar()?.hide()
-//            @Suppress("DEPRECATION")
-//            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-//        }
-//    }
+    private fun hideSystemUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+            window.insetsController?.let {
+                it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        } else {
+            getSupportActionBar()?.hide()
+            @Suppress("DEPRECATION")
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+    }
 }

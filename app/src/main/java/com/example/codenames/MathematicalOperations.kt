@@ -60,15 +60,23 @@ class MathematicalOperations {
             return decimalToSixtyTwo(decimal.toString())
         }
 
-        fun CreateColorMap (): List<Int>{
+        fun createColorMap (): List<Int>{
             val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled()
             return cardMap
         }
 
-        fun CreateWordMap (listSize: Int): List<Int>{
+        fun createWordMap (listSize: Int): List<Int>{
             val s: MutableSet<Int> = mutableSetOf()
             while (s.size < 25) { s.add((0..(listSize-1)).random()) }
             return s.toList()
+        }
+
+        fun checkKey (key: String?): Boolean{
+            if(key == null) return false
+            if(key.length < 58 || key.length > 61) return false
+            if(key[0].toString().toInt() < 0 || key[0].toString().toInt() > 7) return false
+            if(key[1].toString().toInt() != 0 && key[1].toString().toInt() != 1) return false
+            return true
         }
     }
 }
