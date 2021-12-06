@@ -52,12 +52,20 @@ class ActivityGame : AppCompatActivity(R.layout.activity_game) {
         //TODO тесты
         println("--------------")
 
-        println(game?.generateKey())
-        println(game?.colorMap?.joinToString(""))
-        println(game?.wordMap)
-        println(MathematicalOperations.quaternaryToSixtyTwo("3222222222111111110000000"))
-        println(MathematicalOperations.quaternaryToSixtyTwo("111111112222222223"))
-        println(MathematicalOperations.checkKey(game?.generateKey()))
+//        println(game?.generateKey())
+//        println("color map" + game?.colorMap?.joinToString(""))
+//        println(game?.wordMap)
+//        println(MathematicalOperations.quaternaryToSixtyTwo("3222222222111111110000000"))
+//        println(MathematicalOperations.sixtyTwoToDecimal("4j4Fa9AHY", true))
+//        println(MathematicalOperations.decimalToQuaternary("1032074556686336"))
+//
+//
+//        println(MathematicalOperations.quaternaryToSixtyTwo("111111112222222223"))
+//        println(MathematicalOperations.sixtyTwoToDecimal("P0Elxr", true))
+//        println(MathematicalOperations.decimalToQuaternary("22906841771"))
+//
+//        println(MathematicalOperations.createWordMapFromKey("010F3l4n1J1m2O1y204a510L141I5K0j4u4N5p374M221k5u0D6127SwIdQJc"))
+
     }
 
     private fun addCardToFragmentForTeamLead(ids: Int, number: Int, color: Int, word: Int, textVisibility: Boolean ) {

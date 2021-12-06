@@ -11,7 +11,7 @@ class EnterKeyActivity : AppCompatActivity(R.layout.enter_key_activity) {
         super.onCreate(savedInstanceState)
 
         btn_begin_game.setOnClickListener {
-            goToChoiseLeadingOrNot(et_key, this, this)
+            goToChoiseLeadingOrNot(et_key, this, this, "//TODO key")
         }
 
     }

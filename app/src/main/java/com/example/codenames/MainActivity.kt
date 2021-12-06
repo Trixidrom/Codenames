@@ -35,20 +35,20 @@ class MainActivity : AppCompatActivity() {
             val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             var pasteData = ""
 
-            if (!clipboard.hasPrimaryClip() or !clipboard.getPrimaryClipDescription()?.hasMimeType(MIMETYPE_TEXT_PLAIN)!!) {
+            if (!clipboard.hasPrimaryClip() || !clipboard.getPrimaryClipDescription()?.hasMimeType(MIMETYPE_TEXT_PLAIN)!!) {
                 //если в буфере ничего нет или там не текст
 
+                val enterKeyIntent = Intent (this, EnterKeyActivity::class.java)
+                startActivity(enterKeyIntent)
             } else {
                 //если в буфере текст
-                val keyExistDialog = KeyExistDialog()
+                val item: ClipData.Item = clipboard.getPrimaryClip()!!.getItemAt(0)
+                // получаем буфер в виде текста.
+                pasteData = item.text.toString()
+
+                val keyExistDialog = KeyExistDialog.newInstance(pasteData)
                 val manager = supportFragmentManager
                 keyExistDialog.show(manager, "keyExist")
-
-
-                val item: ClipData.Item = clipboard.getPrimaryClip()!!.getItemAt(0)
-
-                // Gets the clipboard as text.
-                pasteData = item.text.toString()
             }
 
             println("паст дата: $pasteData")

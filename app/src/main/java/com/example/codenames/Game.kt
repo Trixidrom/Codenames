@@ -37,6 +37,7 @@ class Game {
     companion object {
 
         var game: Game? = null
+        var key = ""
 
         fun getInstance(): Game? {
             if (game == null) {
@@ -53,6 +54,17 @@ class Game {
             }
             return game
         }
+
+        fun getInstance(key: String): Game? {
+                game = Game()
+                this.key = key
+                Dictionary.setDictionary(key.first().toString().toInt())
+
+                game?.colorMap = MathematicalOperations.createColorMapFromKey(key)
+                game?.wordMap = MathematicalOperations.createWordMapFromKey(key)
+                game?.redFirst = key[1].toString().toInt() == 1
+            return game
+        }
     }
 
     fun generateKey(): String{
@@ -60,7 +72,7 @@ class Game {
             if(a.length>1) a else "0$a"}.joinToString("")
         val colorMapKey = MathematicalOperations.quaternaryToSixtyTwo(colorMap.joinToString(""))
 
-        val key = Dictionary.numberDictionary.toString() + if(redFirst) "1" else {"0"} + wordMapKey + colorMapKey
+        key = Dictionary.numberDictionary.toString() + if(redFirst) "1" else {"0"} + wordMapKey + colorMapKey
         return key
     }
 

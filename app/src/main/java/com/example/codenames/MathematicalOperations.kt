@@ -37,6 +37,18 @@ class MathematicalOperations {
             return result.reversed()
         }
 
+        fun decimalToQuaternary(input: String): String{
+            var dec = BigInteger(input)
+            var digit: Int
+            var result = ""
+            while (dec>BigInteger.ZERO){
+                digit = dec.mod(BigInteger.valueOf(4L)).toInt()
+                result += digit
+                dec = dec.divide(BigInteger.valueOf(4L))
+            }
+            return result.reversed()
+        }
+
         fun sixtyTwoToDecimal(input: String): Int{
             var result = 0
             var indexCharOfInput = 0
@@ -48,6 +60,17 @@ class MathematicalOperations {
             return result
         }
 
+        fun sixtyTwoToDecimal(input: String, Big: Boolean): String{
+            var result = BigInteger("0")
+            var indexCharOfInput = 0
+
+            for(i in input.length-1 downTo 0){
+                result += BigInteger.valueOf(dictionary.indexOf(input[indexCharOfInput]).toLong()).multiply(BigInteger.valueOf(countDictionary.toLong()).pow(i))
+                indexCharOfInput++
+            }
+            return result.toString()
+        }
+
         fun quaternaryToSixtyTwo(input: String): String {
             var decimal = BigInteger.valueOf(0)
             var indexCharOfInput = 0
@@ -55,14 +78,36 @@ class MathematicalOperations {
                 decimal += BigInteger.valueOf(input[indexCharOfInput].toString().toLong()).multiply(BigInteger.valueOf(4f.pow(i.toFloat()).toLong()))
                 indexCharOfInput++
             }
+            println("10ая" + decimal)
             //^ реализован перевод с 4ричной в 10тичную
 
             return decimalToSixtyTwo(decimal.toString())
         }
 
+
+
         fun createColorMap (): List<Int>{
             val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled()
             return cardMap
+        }
+
+        fun createColorMapFromKey(key: String): List<Int>{
+            val dec = sixtyTwoToDecimal(key.substring(52), true)
+            var quat = decimalToQuaternary(dec)
+            while(quat.length<25){
+                quat = "0" + quat
+            }
+            return quat.map{it.toString().toInt()}
+        }
+
+        fun createWordMapFromKey(key: String): List<Int>{
+            val keyMap = key.substring(2)
+            var wordMap= mutableListOf<Int>()
+            for (i in 0..48 step 2){
+                wordMap.add(sixtyTwoToDecimal(keyMap.substring(i,i+2)))
+            }
+
+            return wordMap
         }
 
         fun createWordMap (listSize: Int): List<Int>{
