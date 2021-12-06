@@ -78,7 +78,7 @@ class MathematicalOperations {
                 decimal += BigInteger.valueOf(input[indexCharOfInput].toString().toLong()).multiply(BigInteger.valueOf(4f.pow(i.toFloat()).toLong()))
                 indexCharOfInput++
             }
-            println("10ая" + decimal)
+
             //^ реализован перевод с 4ричной в 10тичную
 
             return decimalToSixtyTwo(decimal.toString())
@@ -86,18 +86,18 @@ class MathematicalOperations {
 
 
 
-        fun createColorMap (): List<Int>{
-            val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled()
+        fun createColorMap (): MutableList<Int>{
+            val cardMap = listOf<Int>(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3).shuffled().toMutableList()
             return cardMap
         }
 
-        fun createColorMapFromKey(key: String): List<Int>{
+        fun createColorMapFromKey(key: String): MutableList<Int>{
             val dec = sixtyTwoToDecimal(key.substring(52), true)
             var quat = decimalToQuaternary(dec)
             while(quat.length<25){
                 quat = "0" + quat
             }
-            return quat.map{it.toString().toInt()}
+            return quat.map{it.toString().toInt()}.toMutableList()
         }
 
         fun createWordMapFromKey(key: String): List<Int>{

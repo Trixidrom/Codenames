@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 keyExistDialog.show(manager, "keyExist")
             }
 
-            println("паст дата: $pasteData")
         }
 
         ib_key.setOnClickListener{

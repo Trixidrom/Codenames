@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.codenames.Game.Companion.game
 
 private const val ARG_KEY = "key"
 
@@ -38,7 +39,14 @@ class AreYouLeadingDialog : DialogFragment() {
             builder.setTitle("Вы ведущий?")
                 .setNegativeButton("Нет"){
                     dialog, id ->
-                    Toast.makeText(context, "Не", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+
+                    Dictionary.setDictionary(key?.first().toString().toInt())
+                    Game.getInstance(key!!)
+                    game?.isLeading = false
+                    game?.colorMap = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    val newGameIntent = Intent (context, ActivityGame::class.java)
+                    startActivity(newGameIntent)
                 }
                 .setPositiveButton("Да"){
                         dialog, id ->
@@ -46,6 +54,7 @@ class AreYouLeadingDialog : DialogFragment() {
 
                     Dictionary.setDictionary(key?.first().toString().toInt())
                     Game.getInstance(key!!)
+                    game?.isLeading = true
 
                     val newGameIntent = Intent (context, ActivityGame::class.java)
                     startActivity(newGameIntent)

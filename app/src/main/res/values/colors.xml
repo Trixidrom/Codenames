@@ -10,5 +10,6 @@
     <color name="codeRed">#FAA3A3</color>
     <color name="codeBlue">#73B4FA</color>
     <color name="codeYellow">#FFD58C</color>
-    <color name="codeBlack">#818181</color>
+    <color name="codeBlack">#7A7A7A</color>
+    <color name="codeGrey">#B6B6B6</color>
 </resources>

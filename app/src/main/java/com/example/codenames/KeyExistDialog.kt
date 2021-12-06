@@ -25,9 +25,6 @@ class KeyExistDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        dialog = context?.let { Dialog(it) }
-//        dialog?.setContentView(R.layout.dialog_visibility_card)
-
         arguments?.let {
             key = it.getString(ARG_KEY)
         }
