@@ -46,11 +46,20 @@ class ActivityGame : AppCompatActivity(R.layout.activity_game) {
         game = Game.getInstance()
 
             for (i in 0..24) {
-                addCardToFragmentForTeamLead(cardIds[i],
-                    i,
-                    game?.colorMap?.get(i) ?: 0,
-                    game?.wordMap?.get(i) ?: 0,
-                    game?.visibleWord?.get(i)?: true)
+                if(game?.isLeading!!){
+                    addCardToFragmentForTeamLead(cardIds[i],
+                            i,
+                            game?.colorMap?.get(i) ?: 0,
+                            game?.wordMap?.get(i) ?: 0,
+                            game?.visibleWord?.get(i)?: true)
+                }else{
+                    addCardToFragmentForTeamLead(cardIds[i],
+                            i,
+                            game?.colorMapForNotLeading?.get(i) ?: 0,
+                            game?.wordMap?.get(i) ?: 0,
+                            game?.visibleWord?.get(i)?: true)
+                }
+
             }
     }
 

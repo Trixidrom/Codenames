@@ -132,13 +132,13 @@ class CardFragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.getId()){
             R.id.ib_red -> {frameCard.setBackgroundResource(R.color.codeRed)
-            game?.colorMap?.set(numberCard, 1)}
+            game?.colorMapForNotLeading?.set(numberCard, 1)}
             R.id.ib_blue -> {frameCard.setBackgroundResource(R.color.codeBlue)
-            game?.colorMap?.set(numberCard, 2)}
+            game?.colorMapForNotLeading?.set(numberCard, 2)}
             R.id.ib_yellow -> {frameCard.setBackgroundResource(R.color.codeYellow)
-            game?.colorMap?.set(numberCard, 3)}
+            game?.colorMapForNotLeading?.set(numberCard, 3)}
             else -> {frameCard.setBackgroundResource(R.color.codeGrey)
-            game?.colorMap?.set(numberCard, 0)}
+            game?.colorMapForNotLeading?.set(numberCard, 0)}
         }
         dialog?.dismiss()
     }

@@ -44,7 +44,7 @@ class AreYouLeadingDialog : DialogFragment() {
                     Dictionary.setDictionary(key?.first().toString().toInt())
                     Game.getInstance(key!!)
                     game?.isLeading = false
-                    game?.colorMap = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    game?.colorMapForNotLeading = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
                     val newGameIntent = Intent (context, ActivityGame::class.java)
                     startActivity(newGameIntent)
                 }

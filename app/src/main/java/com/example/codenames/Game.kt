@@ -2,7 +2,8 @@ package com.example.codenames
 
 class Game {
 
-    var colorMap = mutableListOf<Int>()
+    var colorMap = listOf<Int>()
+    var colorMapForNotLeading = mutableListOf<Int>()
     var wordMap = listOf<Int>()
     var redFirst = true
     var isLeading = true
